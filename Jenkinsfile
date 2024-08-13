@@ -4,6 +4,7 @@ pipeline {
     }
     options{
         timeout(time:30,unit:'MINUTES')
+        disableConcurrentBuilds()
     }
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -25,7 +26,6 @@ pipeline {
         stage('Test') {
             steps{
                 sh'echo This is Test'
-                sh 'sleep 10'
             }
         }
         stage('Deploy') {
