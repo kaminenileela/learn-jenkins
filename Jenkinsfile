@@ -5,6 +5,7 @@ pipeline {
     options{
         timeout(time:30,unit:'MINUTES')
         disableConcurrentBuilds()
+        ansiColor('xterm')
     }
      environment {
                 DEPLOY_TO = "production"
@@ -57,6 +58,7 @@ pipeline {
     post{
         always{
             echo 'I will always say hello'
+            deleteDir()
         }
         success{
             echo 'I will run when pipeline is success'
